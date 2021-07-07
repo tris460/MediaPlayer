@@ -1,7 +1,9 @@
 function MediaPlayer(config){
     this.media =config.el;
     this.plugins = config.plugins || [];
+    this.song = config.song;
     this._initPlugins();
+    
 }
  
 MediaPlayer.prototype._initPlugins=function(){
@@ -35,6 +37,18 @@ MediaPlayer.prototype.volumen=function(){
     }else{
         this.mute();
     }
+}
+
+MediaPlayer.prototype.nextSong=function(){
+    if(this.media.getAttribute("src")=="./La Canción del Furret (Furret Walk) [Fandub Español Latino].mp4"){
+        this.media.setAttribute("src", "./Seafret - Atlantis (Official Video).mp4");
+    } else if (this.media.getAttribute("src")=="./Seafret - Atlantis (Official Video).mp4"){
+        this.media.setAttribute("src","./Sol Pereyra — Nadie Te Preguntó [letra].mp4");
+    } else {
+        this.media.setAttribute("src", "./La Canción del Furret (Furret Walk) [Fandub Español Latino].mp4");
+    }
+
+    this.media.play();
 }
 
 export default MediaPlayer;

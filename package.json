@@ -12,5 +12,13 @@
   "license": "ISC",
   "devDependencies": {
     "live-server": "^1.2.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tris460/MediaPlayer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tris460/MediaPlayer/issues"
+  },
+  "homepage": "https://github.com/tris460/MediaPlayer#readme"
 }
