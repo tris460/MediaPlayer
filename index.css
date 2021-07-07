@@ -65,3 +65,9 @@ button{
     height: 30px;
     width: 30px;
 }
+select {
+    font-size: 15pt;
+    background-color: rgb(181, 227, 233);
+    margin: 5px;
+    padding: 5px;
+}
