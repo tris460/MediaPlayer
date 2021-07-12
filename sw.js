@@ -11,6 +11,8 @@ self.addEventListener('fetch', event =>{
         return; //Si no es GET, hace el proceso normal
     }
     event.respondWith(cachedResponse(request))
+    //Actualizamos el caché
+    event.waitUntil(updateCache(request));
 })
 
 async function precache(){
@@ -21,7 +23,6 @@ async function precache(){
         '/index.css',
         '/index.js',
         '/MediaPlayer.js',
-        '/La Canción del Furret (Furret Walk) [Fandub Español Latino].mp4',
         'Seafret - Atlantis (Official Video).mp4',
         'Sol Pereyra — Nadie Te Preguntó [letra].mp4',
         '/Plugins/AutoPause.js',
@@ -32,5 +33,11 @@ async function precache(){
 
 async function cachedResponse(request){
     const cache = await caches.open(VERSION);
-    return response || fetch(request);
+    return cache || fetch(request);
+}
+
+async function updateCache(request){
+    const cache = await caches.open(VERSION);
+    const response = await fetch(request); //Traemos los datos de la red
+    return cache.put(request,response);
 }
