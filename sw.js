@@ -1,9 +1,20 @@
+const VERSION = 'v1';
+
 self.addEventListener('install', event =>{
     event.waitUntil(precache());
 });
 
+self.addEventListener('fetch', event =>{
+    const request = event.request;
+    //Queremos solo peticiones GET
+    if(request.method !== "GET"){
+        return; //Si no es GET, hace el proceso normal
+    }
+    event.respondWith(cachedResponse(request))
+})
+
 async function precache(){
-    const cache= await caches.open("v1");
+    const cache= await caches.open(VERSION);
     return cache.addAll([
         //Archivos que queremos que tenga el caché
         '/',
@@ -17,4 +28,9 @@ async function precache(){
         '/Plugins/AutoPlay.js',
         '/Plugins/PlayList.js',
     ]);
+}
+
+async function cachedResponse(request){
+    const cache = await caches.open(VERSION);
+    return response || fetch(request);
 }
