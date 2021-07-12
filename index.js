@@ -14,3 +14,10 @@ const player = new MediaPlayer({el:video,
 buttonPlay.onclick = () => player.togglePlay();
 buttonMute.onclick = () => player.volumen();
 buttonNext.onclick = () => player.nextSong();
+
+//Nos va a servir para saber si el navegador del usuario le da soporte a los serviceWorkers
+if('serviceWorker' in navigator){
+    navigator.serviceWorker.register ('./sw.js').catch(error =>{
+        console.log(error.message)
+    })
+}
