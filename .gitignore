@@ -1,3 +1,6 @@
 node_modules/
 *.png
 *.mp4
+dist/
+.parcel-cache/
+*.lock
