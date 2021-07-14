@@ -1,12 +1,16 @@
 class MediaPlayer {
+    media: HTMLMediaElement;
+    plugins: Array <any>;
+    //song: ;
+
     constructor(config) {
         this.media = config.el;
         this.plugins = config.plugins || [];
-        this.song = config.song;
-        this._initPlugins();
+      //  this.song = config.song;
+        this.initPlugins();
 
     }
-    _initPlugins() {
+     private initPlugins() {
         // const player = {
         //     play: () => this.play(),
         //     pause: () => this.pause(),
@@ -57,7 +61,6 @@ class MediaPlayer {
         } else {
             this.media.setAttribute("src", "./La Canción del Furret (Furret Walk) [Fandub Español Latino].mp4");
         }
-
         this.media.play();
     }
 }
