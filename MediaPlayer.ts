@@ -2,12 +2,21 @@ class MediaPlayer {
     media: HTMLMediaElement;
     plugins: Array <any>;
     song: any;
+    container: HTMLElement;
 
     constructor(config) {
         this.media = config.el;
         this.plugins = config.plugins || [];
         this.song = config.song;
+        this.initPlayer();
         this.initPlugins();
+    }
+
+    initPlayer(){
+        this.container=document.createElement('div'); //Creamos el contenedor
+        this.container.style.position = 'relative';
+        this.media.parentNode.insertBefore(this.container, this.media); //Le decimos que el container va a ir a un lado del media 
+        this.container.appendChild(this.media); //El container va dentro de media
     }
      private initPlugins() {
         // const player = {
