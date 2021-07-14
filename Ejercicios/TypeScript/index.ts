@@ -49,29 +49,52 @@
 // //Object
 // let someObject:object = { type: "Wildcard"}
 
-//Funciones
-function add(a: number,b:number):number{ //Con los ':' después del paréntesis decimos el tipo de retorno
-    return a+b
-}
-const sum=add(12,3);
+// //Funciones
+// function add(a: number,b:number):number{ //Con los ':' después del paréntesis decimos el tipo de retorno
+//     return a+b
+// }
+// const sum=add(12,3);
 
-//Funciones que regresan funciones
-//Creador de sumas
-function createAdder (a:number): (number)=>number { //(number)=>number indica que el tipo de retorno es una función
-    return function (b:number){
-        return b + a;
-    }
-}
-const addFour = createAdder(4);
-const fourPlusSix = addFour(6);
+// //Funciones que regresan funciones
+// //Creador de sumas
+// function createAdder (a:number): (number)=>number { //(number)=>number indica que el tipo de retorno es una función
+//     return function (b:number){
+//         return b + a;
+//     }
+// }
+// const addFour = createAdder(4);
+// const fourPlusSix = addFour(6);
 
-//Función que sus parámetros no son obligatorios
-function fullName(firstName:string, lastName?:string){ //El '?' indica que puede quedar undefined
-    return `${firstName} ${lastName}`;
-}
-const alejandro = fullName('Alejandro');
+// //Función que sus parámetros no son obligatorios
+// function fullName(firstName:string, lastName?:string){ //El '?' indica que puede quedar undefined
+//     return `${firstName} ${lastName}`;
+// }
+// const alejandro = fullName('Alejandro');
 
-function fullName2(firstName:string, lastName:string = "Sánchez"){ //Agrega un valor default
-    return `${firstName} ${lastName}`;
+// function fullName2(firstName:string, lastName:string = "Sánchez"){ //Agrega un valor default
+//     return `${firstName} ${lastName}`;
+// }
+// const gabriel = fullName('Gabriel');
+
+//Interfaces
+interface Rectangulo {
+    //Propiedades y tipos de la interfaz
+    ancho:number,
+    alto:number,
+    color?:string //Le decimos que no es obligatorio el color
 }
-const gabriel = fullName('Gabriel');
+let rect: Rectangulo = {
+    ancho: 2,
+    alto: 9 //Si no ponemos una propiedad da error, porque la interfaz la requiere
+}
+function area(r:Rectangulo):number{
+    return r.alto*r.ancho;
+}
+const areaRect = area(rect);
+console.log(areaRect); //Imprime 18
+
+rect.toString = function(){ //Podemos decirle que hacer si se llama a toString
+    return this.color ? `Rectangulo ${this.color}` : `Rectangulo transparente` //Si hay color, imprime el primer texto, sino, el segundo 
+}
+
+console.log(rect.toString()); //Como no pasamos color, imprime: Rectangulo transparente
