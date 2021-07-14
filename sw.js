@@ -18,16 +18,16 @@ self.addEventListener('fetch', event =>{
 async function precache(){
     const cache= await caches.open(VERSION);
     return cache.addAll([
-        //Archivos que queremos que tenga el caché
-        '/',
-        '/index.css',
-        '/index.js',
-        '/MediaPlayer.js',
-        'Seafret - Atlantis (Official Video).mp4',
-        'Sol Pereyra — Nadie Te Preguntó [letra].mp4',
-        '/Plugins/AutoPause.js',
-        '/Plugins/AutoPlay.js',
-        '/Plugins/PlayList.js',
+        // //Archivos que queremos que tenga el caché
+        // '/',
+        // '/index.css',
+        // '/index.js',
+        // '/MediaPlayer.js',
+        // 'Seafret - Atlantis (Official Video).mp4',
+        // 'Sol Pereyra — Nadie Te Preguntó [letra].mp4',
+        // '/Plugins/AutoPause.js',
+        // '/Plugins/AutoPlay.js',
+        // '/Plugins/PlayList.js',
     ]);
 }
 
