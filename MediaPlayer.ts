@@ -1,14 +1,13 @@
 class MediaPlayer {
     media: HTMLMediaElement;
     plugins: Array <any>;
-    //song: ;
+    song: any;
 
     constructor(config) {
         this.media = config.el;
         this.plugins = config.plugins || [];
-      //  this.song = config.song;
+        this.song = config.song;
         this.initPlugins();
-
     }
      private initPlugins() {
         // const player = {
