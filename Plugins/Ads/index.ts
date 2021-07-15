@@ -60,7 +60,7 @@ class AdsPlugin {
         setTimeout(()=>{
             this.currentAd=null;
             this.adsContainer.innerHTML='';
-        },10000);
+        },30000);
         // console.log(this.currentAd); 
     }
 }
